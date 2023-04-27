@@ -10,6 +10,10 @@ export class PostsRepository {
     post.id = ++PostsRepository.currentId;
     PostsRepository.posts.push(post);
     return post;
-    console.log(PostsRepository.posts);
+  }
+
+  postDetail(id: number): Post {
+    const post = PostsRepository.posts.find((post) => post.id === id);
+    return post;
   }
 }
