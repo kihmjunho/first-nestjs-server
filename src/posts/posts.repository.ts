@@ -6,6 +6,10 @@ export class PostsRepository {
   private static posts: Post[] = [];
   private static currentId = 0;
 
+  postsAll() {
+    return PostsRepository.posts;
+  }
+
   create(post: Post): Post {
     post.id = ++PostsRepository.currentId;
     PostsRepository.posts.push(post);

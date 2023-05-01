@@ -8,6 +8,11 @@ import { Post as Detail } from './post.entity';
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
+  @Get()
+  getPostsAll() {
+    return this.postsService.postsAll();
+  }
+
   @Post()
   @HttpCode(201)
   create(@Body() createPostDto: CreatePostDto) {

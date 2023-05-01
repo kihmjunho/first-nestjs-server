@@ -2,11 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-post.dto';
 import { Post } from './post.entity';
 import { PostsRepository } from './posts.repository';
-import { PostDetailDto } from './dto/post-detail.dto';
 
 @Injectable()
 export class PostsService {
   constructor(private readonly postsRepository: PostsRepository) {}
+
+  postsAll() {
+    return this.postsRepository.postsAll();
+  }
 
   create(createPostDto: CreatePostDto): Post {
     const { title, description } = createPostDto;
