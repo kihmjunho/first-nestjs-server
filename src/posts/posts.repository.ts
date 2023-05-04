@@ -22,14 +22,16 @@ export class PostsRepository {
   }
 
   updatePost(id: number, post: Post): Post {
-    if (post.title) {
-      PostsRepository.posts[id - 1].title = post.title;
-    }
+    let updatePost: Post;
+    const { title, description } = post;
+    PostsRepository.posts.map((item) => {
+      if (id === item.id) {
+        item.title = title ? title : item.title;
+        item.description = description ? description : item.description;
+        updatePost = item;
+      }
+    });
 
-    if (post.description) {
-      PostsRepository.posts[id - 1].description = post.description;
-    }
-
-    return PostsRepository.posts[id - 1];
+    return updatePost;
   }
 }
