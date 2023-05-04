@@ -1,4 +1,12 @@
-import { Body, Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { PostDetailDto } from './dto/post-detail.dto';
@@ -23,5 +31,14 @@ export class PostsController {
   getPostDetail(@Param() postDetailDto: PostDetailDto): Detail {
     const parseId = parseInt(postDetailDto.id);
     return this.postsService.postDetail(parseId);
+  }
+
+  @Put(':id')
+  updatePost(
+    @Param() postDetailDto: PostDetailDto,
+    @Body() createPostDto: CreatePostDto,
+  ): Detail {
+    const parseId = parseInt(postDetailDto.id);
+    return this.postsService.updatePost(parseId, createPostDto);
   }
 }

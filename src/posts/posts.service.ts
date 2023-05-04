@@ -22,4 +22,12 @@ export class PostsService {
   postDetail(id: number): Post {
     return this.postsRepository.postDetail(id);
   }
+
+  updatePost(id: number, createPostDto: CreatePostDto): Post {
+    const { title, description } = createPostDto;
+    const post = new Post();
+    post.title = title;
+    post.description = description;
+    return this.postsRepository.updatePost(id, post);
+  }
 }
