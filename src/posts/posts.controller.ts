@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   Param,
@@ -40,5 +41,11 @@ export class PostsController {
   ): Detail {
     const parseId = parseInt(postDetailDto.id);
     return this.postsService.updatePost(parseId, createPostDto);
+  }
+
+  @Delete(':id')
+  deletePost(@Param() postDetailDto: PostDetailDto): string {
+    const parseId = parseInt(postDetailDto.id);
+    return this.postsService.deletePost(parseId);
   }
 }

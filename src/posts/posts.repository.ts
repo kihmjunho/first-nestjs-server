@@ -31,7 +31,15 @@ export class PostsRepository {
         updatePost = item;
       }
     });
-
     return updatePost;
+  }
+
+  deletePost(id: number): string {
+    PostsRepository.posts.map((item, index) => {
+      if (id === item.id) {
+        PostsRepository.posts.splice(index, 1);
+      }
+    });
+    return `this post has been deleted`;
   }
 }

@@ -30,4 +30,8 @@ export class PostsService {
     post.description = description;
     return this.postsRepository.updatePost(id, post);
   }
+
+  deletePost(id: number): string {
+    return this.postsRepository.deletePost(id);
+  }
 }
